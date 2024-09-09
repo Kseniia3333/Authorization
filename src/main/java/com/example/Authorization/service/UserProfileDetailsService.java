@@ -10,7 +10,9 @@ import java.io.IOException;
 
 public interface UserProfileDetailsService {
     void setPassword(NewPasswordDto newPassword, Authentication authentication);
+
     User getAuthUserInfo(Authentication authentication);
+
     UpdateUserDto updateAuthUserInfo(UpdateUserDto updateUser, Authentication authentication);
 
     boolean updatePhoto(MultipartFile avatar, Authentication authentication) throws IOException;

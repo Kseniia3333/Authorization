@@ -5,15 +5,15 @@ import lombok.Data;
 import javax.validation.constraints.Size;
 
 
-    @Data
-    public class NewPasswordDto {
-        private String currentPassword;
+@Data
+public class NewPasswordDto {
+    private String currentPassword;
 
-        private String newPassword;
+    private String newPassword;
 
-        public NewPasswordDto currentPassword(String currentPassword) {
-            this.currentPassword = currentPassword;
-            return this;
-        }
+    public NewPasswordDto currentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
+        return this;
     }
+}
 

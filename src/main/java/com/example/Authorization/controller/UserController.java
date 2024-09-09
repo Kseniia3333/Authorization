@@ -20,11 +20,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable Integer id) {
-        return  ResponseEntity.ok(userService.getUserById(id));
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @GetMapping("/all")
-    public ResponseEntity <List<User>> findAllUsers() {
+    public ResponseEntity<List<User>> findAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 

@@ -27,6 +27,7 @@ public class Image {
 
     @Column(name = "MEDIA_TYPE", nullable = false)
     private String mediaType;
+
     public Path getPath() {
         return Path.of(this.filePath);
     }

@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -42,9 +43,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteUser(Integer id) {
         log.info("запустился метод удаления пользователя");
-       User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
-           userRepository.delete(user);
+        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        userRepository.delete(user);
         return false;
     }
-    }
+}
 
