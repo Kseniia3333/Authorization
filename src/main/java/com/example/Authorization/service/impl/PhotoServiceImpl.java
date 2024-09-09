@@ -17,6 +17,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
+
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
 @Service
@@ -28,16 +29,15 @@ public class PhotoServiceImpl implements PhotoService {
     private final ImageRepository imageRepository;
 
 
-
     /**
-     * @param id id сущности изображения
+     * @param id       id сущности изображения
      * @param response ответ сервера
      */
     @Override
     public void transferImageToResponse(Integer id, HttpServletResponse response) {
         log.info("Был вызван метод для трансформации изображения для ответа{}{}", id, response);
         Image image = imageRepository.findById(id)
-                .orElseThrow(()->new ImageNotFoundException("Не удалось найти изображение по id: "+ id));
+                .orElseThrow(() -> new ImageNotFoundException("Не удалось найти изображение по id: " + id));
         try (InputStream is = Files.newInputStream(Path.of(image.getFilePath()));
              OutputStream os = response.getOutputStream()) {
             response.setStatus(200);
@@ -46,16 +46,17 @@ public class PhotoServiceImpl implements PhotoService {
             is.transferTo(os);
 
         } catch (IOException e) {
-            throw new RuntimeException("Failed to transfer image to response ",e);
+            throw new RuntimeException("Failed to transfer image to response ", e);
         }
     }
-   @Override
+
+    @Override
     /**
      * @param imageFile файл с изображением
      * @return файл с изображением в директории
      * @throws IOException
      */
-  public Image saveImageFile(MultipartFile imageFile) throws IOException {
+    public Image saveImageFile(MultipartFile imageFile) throws IOException {
         log.info("Был вызван метод для сохранения файла с изображением в директорию{}", imageFile);
         Path filePath = createPathFromFile(imageFile);
         Files.createDirectories(filePath.getParent());
