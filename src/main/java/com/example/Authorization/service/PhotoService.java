@@ -14,7 +14,7 @@ public interface PhotoService {
      * @return файл с изображением в директории
      * @throws IOException
      */
-    Image saveImageFile (MultipartFile imageFile) throws IOException;
+    Image saveImageFile(MultipartFile imageFile) throws IOException;
 
 
 }
